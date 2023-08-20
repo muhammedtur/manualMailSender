@@ -39,7 +39,7 @@ def sendEmailWithAttachment(receiver_email, subject, message, fileName, attachme
         msg['Subject'] = subject
 
         # Add message body to the message
-        msg.attach(MIMEText(message, 'plain', 'utf-8'))
+        msg.attach(MIMEText(message, 'html', 'utf-8'))
 
         # Open the file in bynary
         with open(attachment_path, 'rb') as attachment:
