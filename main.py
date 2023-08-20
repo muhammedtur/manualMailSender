@@ -1,4 +1,5 @@
 import os
+import time
 
 from dotenv import load_dotenv
 from os.path import basename
@@ -33,6 +34,8 @@ for file in files:
             os.replace(zipFilesPath + file, zipFilesPath + "sent/" + fileName)
         except:
             os.remove(zipFilesPath + file)
+
+    time.sleep(2)
 
 if customers:
     sendEmail(os.getenv('EMAIL_PROVIDER_TO'), os.getenv('EMAIL_PROVIDER_SUBJECT'), str(customers))
