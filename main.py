@@ -22,7 +22,10 @@ for file in files:
     emailAddress = file[idx1 + 1: idx2]
     fileName = file[idx2 + 1:]
 
-    emailSent = sendEmailWithAttachment(emailAddress, os.getenv('EMAIL_SUBJECT'), os.getenv('EMAIL_TEXT'), fileName, zipFilesPath + file)
+    if emailAddress:
+        emailSent = sendEmailWithAttachment(emailAddress, os.getenv('EMAIL_SUBJECT'), os.getenv('EMAIL_TEXT'), fileName, zipFilesPath + file)
+    else:
+        continue
 
     if emailSent:
         customers.append([emailAddress, fileName])
