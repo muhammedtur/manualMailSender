@@ -8,6 +8,7 @@ from utilities.mailSender import sendEmail, sendEmailWithAttachment
 load_dotenv()
 
 invoiceFilesPath = os.getenv('INVOICE_FOLDER')
+invoiceFileExtension = os.getenv('INVOICE_FILE_EXTENSION')
 invoiceFiles = os.listdir(invoiceFilesPath)
 
 customers = []
@@ -17,7 +18,7 @@ end = "]"
 files = [f for f in invoiceFiles if os.path.isfile(invoiceFilesPath + '/' + f)]
 
 for file in files:
-    if file.endswith('.html'):
+    if file.endswith(invoiceFileExtension):
         idx1 = file.find(start)
         idx2 = file.find(end)
 
