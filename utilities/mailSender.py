@@ -43,8 +43,8 @@ def sendEmailWithAttachment(receiver_email, subject, message, fileName, attachme
 
         # Open the file in bynary
         with open(attachment_path, 'rb') as attachment:
-            # Add file as application/zip
-            part = MIMEBase('application', 'zip')
+            # Add file as html
+            part = MIMEMultipart('mixed')
             part.set_payload(attachment.read())
 
         # Encode file in ASCII characters to send by email    
